@@ -1,6 +1,8 @@
+import styles from '../Header.module.css'; 
+
 function Header({title}) {
   return (
-    <header>
+    <header className={styles.header}>
         <div className="container">
             <h2>{title}</h2>
         </div>
