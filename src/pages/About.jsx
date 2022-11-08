@@ -1,14 +1,19 @@
 import Card from '../components/shared/Card'
-import Header from '../components/Header'
+import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function AboutPage() {
   return (
     <>
-    <Header />
     <div className="container">
         <Card>
           <h1>About</h1>
-          <p><a href="/">back</a></p>
+          <p><Link to="/">back</Link></p>
+        </Card>
+
+        <Card>
+            <NavLink to='/' activeclassname='active'>Home</NavLink>
+            <NavLink to='/about' activeclassname='active'>About</NavLink>
         </Card>
     </div>
     </>
