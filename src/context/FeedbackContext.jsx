@@ -5,13 +5,7 @@ import FeedbackData from '../data/FeedbackData'
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ( {children} ) => {
-    const [feedback, setFeedback] = useState([
-        {
-            id: 1,
-            text: 'item from context',
-            rating: 10
-        }
-    ])
+    const [feedback, setFeedback] = useState(FeedbackData)
 
     const deleteFeedback = (id) => {
         if(window.confirm('Are you sure?')) {
