@@ -1,6 +1,8 @@
+import { useContext } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
-
-function FeedbackStats({feedback}) {
+function FeedbackStats() {
+    const {feedback} = useContext(FeedbackContext)
 
     // Calculer la moyenne avec reduce
     let average = feedback.reduce((accumulator, currentValue) => {
