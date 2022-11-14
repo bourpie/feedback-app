@@ -228,3 +228,21 @@ input:focus {
     width: 80%;
   }
 }
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+.spinner {
+  font-size: 10rem;
+  animation: loading 3s linear infinite;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
