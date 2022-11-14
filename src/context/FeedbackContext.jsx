@@ -21,23 +21,37 @@ export const FeedbackProvider = ( {children} ) => {
 
     //fetch data
     const fetchFeedback = async () => {
-        const response = await fetch("http://localhost:5000/feedback?_sort=id&_order=desc")
+        const response = await fetch(`http://localhost:5000/feedback?_sort=id&_order=desc`)
         const data = await response.json()
         setFeedback(data)
         setIsLoading(false)
     }
 
     // Delete feedback function
-    const deleteFeedback = (id) => {
+    const deleteFeedback = async (id) => {
         
         if(window.confirm('Are you sure?')) {
+
+            await fetch(`http://localhost:5000/feedback/${id}`, { method: 'DELETE' })
+
             setFeedback(feedback.filter(item => item.id !== id))
         }   
     }
 
     // Add feedback function
-    const addFeedback = (newFeedback) => {
-        setFeedback([newFeedback, ...feedback])
+    const addFeedback = async (newFeedback) => {
+
+        const response = await fetch(`http://localhost:5000/feedback`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newFeedback),
+        })
+
+        const data = await response.json()
+
+        setFeedback([data, ...feedback])
     }
 
     // Set item to be updated function
@@ -48,8 +62,19 @@ export const FeedbackProvider = ( {children} ) => {
         })
     }
 
-    const updateFeedback = (id, updItem) => {
-        setFeedback(feedback.map((item) => item.id === id ? { ...updItem } : item))
+    const updateFeedback = async (id, updItem) => {
+
+        const response = await fetch(`http://localhost:5000/feedback/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(updItem)
+        })
+
+        const data = await response.json()
+
+        setFeedback(feedback.map((item) => item.id === id ? { ...data } : item))
         setFeedbackEdit({
             item: {},
             edit: false,

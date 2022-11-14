@@ -1,19 +1,19 @@
 {
-    "feedback": [
-        {
-            "id": 1,
-            "rating": 10,
-            "text": "Text from db.json"
-        },
-        {
-            "id": 2,
-            "rating": 8,
-            "text": "Text2 from db.json"
-        }, 
-        {
-            "id": 3,
-            "rating": 7,
-            "text": "Text3 from db.json"
-        }              
-    ]
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "Text from db.json"
+    },
+    {
+      "id": 2,
+      "rating": 8,
+      "text": "Text2 from db.json"
+    },
+    {
+      "text": "edited Text3 from db.json",
+      "rating": 9,
+      "id": 3
+    }
+  ]
 }
